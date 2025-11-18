@@ -52,6 +52,16 @@ function setup() {
 
   // Shuffle the board
   simpleShuffle(board);
+
+  // --- Load saved board if exists ---
+  let saved = localStorage.getItem("slidePuzzleBoard");
+
+  if (saved) {
+    let loaded = JSON.parse(saved);
+    if (Array.isArray(loaded) && loaded.length === board.length) {
+      board = loaded;
+    }
+  }
 }
 
 // Swap two elements of an array
@@ -136,6 +146,8 @@ function move(i, j, arr) {
   // Double check valid move
   if (isNeighbor(i, j, blankCol, blankRow)) {
     swap(blank, i + j * cols, arr);
+    // Save board to localStorage
+    localStorage.setItem("slidePuzzleBoard", JSON.stringify(board));
   }
 }
 
