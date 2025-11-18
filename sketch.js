@@ -21,11 +21,11 @@ let board = [];
 
 // Loading the image
 function preload() {
-  source = loadImage('fistikla.jpg');
+  source = loadImage('fistikla_orj.jpg');
 }
 
 function setup() {
-  createCanvas(400, 400);
+  createCanvas(1000, 1000);
   // pixel dimensions of each tiles
   w = width / cols;
   h = height / rows;
